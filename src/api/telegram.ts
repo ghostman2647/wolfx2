@@ -324,6 +324,15 @@ export class Telegram {
       );
    }
 
+   async getMaterial(){
+      if (this.bot.loginParams.type == `wallet`) {
+         const material = await this.bot.client.web3GetRock();
+         let m = 0;
+         if (material !== null){ m = material};
+         return m;
+      }
+   }
+
    async sendMessage(ctx: any, msg: string) {
       for (const texto of str_split(msg, 4000)) {
          if (!texto) return;
@@ -450,12 +459,14 @@ ${resultDb
       const caracter = lastItem ? this.lastItem : this.item;
       const subItem = lastItem ? this.subLastItem : this.subItem;
       const subItemLast = lastItem ? this.subLastItemLast : this.subItemLast;
-
+      const material = this.getMaterial();
+      
       return (
          `${caracter} <b>${username}</b>\n` +
          `${subItem} Bomb: ${bcoin}\n` +
          `${subItem} Bomberman: ${bomberman}\n` +
          `${subItem} Zero Shield: ${zeroShield}\n` +
+         `${subItem} Material: ${material}\n` +
          `${subItemLast} Date: ${dateStr}`
       );
    })
