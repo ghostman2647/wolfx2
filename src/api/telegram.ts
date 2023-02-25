@@ -434,6 +434,7 @@ ${resultDb
             rewardsAllPermission.includes(account.username))
    )
    .map((account, index: number) => {
+      account.username.sort((a.username < b.username)? -1:1);
       const date = new Date(account.rewards.date);
       const username = account.username;
       const zeroShield = this.getTotalHeroZeroShield(account);
@@ -459,14 +460,12 @@ ${resultDb
       const caracter = lastItem ? this.lastItem : this.item;
       const subItem = lastItem ? this.subLastItem : this.subItem;
       const subItemLast = lastItem ? this.subLastItemLast : this.subItemLast;
-      const material = this.getMaterial();
-      
+
       return (
          `${caracter} <b>${username}</b>\n` +
          `${subItem} Bomb: ${bcoin}\n` +
          `${subItem} Bomberman: ${bomberman}\n` +
          `${subItem} Zero Shield: ${zeroShield}\n` +
-         `${subItem} Material: ${material}\n` +
          `${subItemLast} Date: ${dateStr}`
       );
    })
