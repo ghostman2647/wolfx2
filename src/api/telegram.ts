@@ -311,11 +311,16 @@ export class Telegram {
          .map((hero, index) => formatMsg(hero, index, inactive.length))
          .join("\n");
 
+      const material = await this.bot.client.web3GetRock();
+      let m = 0;
+      if (material !== null){ m = material};
       return this.sendMessage(
          context,
          `Total heroes: ${active.length + inactive.length}\n\n` +
             `Active heroes (${active.length}):\n${activeText}\n\n` +
-            `Deactivated heroes (${inactive.length}):\n${inactiveText}`
+            `Deactivated heroes (${inactive.length}):\n${inactiveText}\n` +
+            `Material : ${m}`
+
       );
    }
 
