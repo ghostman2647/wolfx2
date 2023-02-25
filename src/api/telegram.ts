@@ -434,7 +434,7 @@ ${resultDb
             rewardsAllPermission.includes(account.username))
    )
    .map((account, index: number) => {
-      account.username.sort((a.username < b.username)? -1:1);
+      account.username.sort((a,b) => (a.username < b.username)? -1:1);
       const date = new Date(account.rewards.date);
       const username = account.username;
       const zeroShield = this.getTotalHeroZeroShield(account);
