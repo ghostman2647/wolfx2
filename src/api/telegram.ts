@@ -418,8 +418,8 @@ export class Telegram {
    async telegramRewardsAll(context: Context) {
       const { rewardsAllPermission } = this.bot.params;
 
-      const resultDb = this.bot.db.getAllDatabase();
-
+      let resultDb = this.bot.db.getAllDatabase();
+      //resultDb.sort((a,b)=>(a.account.username < b.account.username)? -1:1);
       const html = `
 <b>Rewards</b>
 
@@ -433,8 +433,8 @@ ${resultDb
          (rewardsAllPermission.length &&
             rewardsAllPermission.includes(account.username))
    )
+   .sort((a,b)=>(a.identify < b.identify)? -1:1)
    .map((account, index: number) => {
-      account.username.sort((a,b) => (a.username < b.username)? -1:1);
       const date = new Date(account.rewards.date);
       const username = account.username;
       const zeroShield = this.getTotalHeroZeroShield(account);
