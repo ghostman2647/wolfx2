@@ -529,7 +529,7 @@ export class TreasureMapBot {
    async alertShieldHero(hero: Hero) {
       if (!(await this.notification.hasHeroShield(hero.id))) {
          let material = await this.client.web3GetRock();
-         this.telegram.sendMessageChat(`Hero ${hero.id} needs shield repair\nVocê tem 🪨${material} disponivel!`);
+         this.telegram.sendMessageChat(`Hero ${hero.id} needs shield repair\nYou have 🪨${material} of material!`);
          this.notification.setHeroShield(hero.id, this.getSumShield(hero));
       }
       logger.info(`Hero ${hero.id} needs shield repair`);
@@ -543,7 +543,7 @@ export class TreasureMapBot {
    async alertShielZerodHero(hero: Hero) {
       if (!(await this.notification.hasHeroZeroShield(hero.id))) {
          let material = await this.client.web3GetRock();
-         this.telegram.sendMessageChat(`\n⚠️<b>Zero Shield Detected!</b>\nHero ${hero.id} has 0 shield\n- This moment\n- You have ${material} of material`);
+         this.telegram.sendMessageChat(`\n⚠️***Zero Shield Detected!***\nHero ${hero.id} has 0 shield\n- This moment, You have ${material} of material`);
          this.notification.setHeroZeroShield(hero.id, 0);
       }
    }
@@ -1231,7 +1231,7 @@ export class TreasureMapBot {
          await this.awaitHeroFarm();
 
          await this.telegram.sendMessageChat(
-            `Repairing shield hero ${hero.id}...`
+            `Repairing shield hero ${hero.id}...\n using ${hero.rockRepairShield} of material..`
          );
          const transaction = await this.client.web3ResetShield(hero);
          this.lastTransactionWeb3 = transaction.transactionHash;
