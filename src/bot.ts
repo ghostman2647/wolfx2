@@ -528,7 +528,7 @@ export class TreasureMapBot {
 
    async alertShieldHero(hero: Hero) {
       if (!(await this.notification.hasHeroShield(hero.id))) {
-         let material = this.client.web3GetRock();
+         let material = await this.client.web3GetRock();
          this.telegram.sendMessageChat(`Hero ${hero.id} needs shield repair\nVocê tem 🪨${material} disponivel!`);
          this.notification.setHeroShield(hero.id, this.getSumShield(hero));
       }
@@ -542,7 +542,7 @@ export class TreasureMapBot {
    }
    async alertShielZerodHero(hero: Hero) {
       if (!(await this.notification.hasHeroZeroShield(hero.id))) {
-         let material = this.client.web3GetRock();
+         let material = await this.client.web3GetRock();
          this.telegram.sendMessageChat(`\n⚠️<b>Zero Shield Detected!</b>\nHero ${hero.id} has 0 shield\n- This moment\n- You have ${material} of material`);
          this.notification.setHeroZeroShield(hero.id, 0);
       }
