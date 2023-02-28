@@ -528,20 +528,22 @@ export class TreasureMapBot {
 
    async alertShieldHero(hero: Hero) {
       if (!(await this.notification.hasHeroShield(hero.id))) {
-         this.telegram.sendMessageChat(`Hero ${hero.id} needs shield repair`);
+         let material = this.cliente.web3GetRock();
+         this.telegram.sendMessageChat(`Hero ${hero.id} needs shield repair\nVocê tem 🪨${material} disponivel!`);
          this.notification.setHeroShield(hero.id, this.getSumShield(hero));
       }
       logger.info(`Hero ${hero.id} needs shield repair`);
    }
    async alertMaterial(material: number) {
       if (!(await this.notification.hasMaterial())) {
-         this.telegram.sendMessageChat(`You need more material`);
+         this.telegram.sendMessageChat(`You need more material: ${material}`);
          this.notification.setMaterial(material);
       }
    }
    async alertShielZerodHero(hero: Hero) {
       if (!(await this.notification.hasHeroZeroShield(hero.id))) {
-         this.telegram.sendMessageChat(`Hero ${hero.id} has 0 shield`);
+         let material = this.client.web3GetRock();
+         this.telegram.sendMessageChat(`\n⚠️<b>Zero Shield Detected!</b>\nHero ${hero.id} has 0 shield\n- This moment\n- You have ${material} of material`);
          this.notification.setHeroZeroShield(hero.id, 0);
       }
    }
