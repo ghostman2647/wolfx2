@@ -585,10 +585,11 @@ ${resultDb
             : "empty shield";
          const isLast = index == result.length - 1;
          const caracter = isLast ? this.lastItem : this.item;
+         const materialneeded = hero.rockRepairShield;
 
          return `${caracter} ${this.getColor(hero)} ${hero.raritySimbol} [${
             hero.id
-         }]: ${shield}`;
+         }]: ${shield} - M(${materialneeded})`;
       };
       let message =
          "Account not connected, wait the bot will try to connect again";
