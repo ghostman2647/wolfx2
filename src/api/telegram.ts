@@ -685,7 +685,7 @@ ${resultDb
 
       context.replyWithHTML(html);
    }
-   async telegramCheckVersion() {
+   async telegramCheckVersion(context: Context) {
        const existNotification = await this.bot.notification.hasUpdateVersion();
        if (existNotification) {
           const message =
