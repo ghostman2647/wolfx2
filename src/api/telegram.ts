@@ -460,7 +460,7 @@ ${resultDb
       const caracter = lastItem ? this.lastItem : this.item;
       const subItem = lastItem ? this.subLastItem : this.subItem;
       const subItemLast = lastItem ? this.subLastItemLast : this.subItemLast;
-      const material = this.getMaterial();
+      const material = account.getMaterial;
       return (
          `${caracter} <b>${username}</b>\n` +
          `${subItem} Bomb: ${bcoin}\n` +
