@@ -589,7 +589,7 @@ ${resultDb
 
          return `${caracter} ${this.getColor(hero)} ${hero.raritySimbol} [${
             hero.id
-         }]: ${shield} - M(${materialneeded})`;
+         }]: ${shield} 🪨[${materialneeded}]`;
       };
       let message =
          "Account not connected, wait the bot will try to connect again";
@@ -686,13 +686,13 @@ ${resultDb
       context.replyWithHTML(html);
    }
    async telegramCheckVersion() {
-      // const existNotification = await this.bot.notification.hasUpdateVersion();
-      // if (existNotification) {
-      //    const message =
-      //       "Please update your code version, run yarn start on your computer, and execute in your telegram /start";
-      //    context.replyWithHTML(message);
-      //    return false;
-      // }
+       const existNotification = await this.bot.notification.hasUpdateVersion();
+       if (existNotification) {
+          const message =
+             "Please update your code version, run yarn start on your computer, and execute in your telegram /start";
+          context.replyWithHTML(message);
+          return false;
+       }
       return true;
    }
    async telegramAverageGasPolygon(context: Context) {
