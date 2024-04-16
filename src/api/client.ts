@@ -293,7 +293,7 @@ export class Client {
 
    async createServer(server: string) {
       this.sfs = new SmartFox({
-         host: `server-${server}.bombcrypto.io`,
+         host: `sv-pvp-sg-p.bombcrypto.io`,
          port: PORT,
          zone: ZONE,
          debug: askAndParseEnv("DEBUG", parseBoolean, false),
@@ -444,11 +444,11 @@ export class Client {
 
    async getPing(server: string) {
       const start = process.hrtime();
-      await got.get(`https://api.bombcrypto.io/ping/${server}`, {
+      await got.get(`https://sv-pvp-sg-p.bombcrypto.io/ping`, {
          headers: this.apiBaseHeaders,
          http2: true,
       });
-      await got.get(`https://api.bombcrypto.io/ping/${server}`, {
+      await got.get(`https://sv-pvp-sg-p.bombcrypto.io/ping`, {
          headers: this.apiBaseHeaders,
          http2: true,
       });
